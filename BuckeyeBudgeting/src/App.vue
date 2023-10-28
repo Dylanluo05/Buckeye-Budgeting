@@ -170,13 +170,13 @@ import Navbar from './components/Navbar.vue'
   .section-title {
     font-size: 35px;
     color: #c10435;
-    margin-left: 25px;
+    margin-left: 35px;
   }
 
   .section-value {
     font-size: 25px;
     color: black;
-    margin-left: 25px;
+    margin-left: 35px;
   }
 
   #budget-envelopes-section {
