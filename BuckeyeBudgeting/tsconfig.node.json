@@ -8,6 +8,8 @@
     "playwright.config.*"
   ],
   "compilerOptions": {
+    "noImplicitAny": false,
+    "allowJs": true,
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",

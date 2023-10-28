@@ -1,14 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-//import HomeView from '../views/HomeView.vue'
-import Ping from '../components/Ping.vue'
+import Navbar from '../components/Navbar.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/ping',
-      name: 'ping',
-      component: Ping
+      path: '/navbar',
+      name: 'navbar',
+      component: Navbar
     }
     /*{
       path: '/',
