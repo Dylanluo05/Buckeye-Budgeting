@@ -1,25 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Navbar from '../components/Navbar.vue'
 import App from '../App.vue'
+import Home from '../Home.vue'
 import Transactions from '../Transactions.vue'
 import Visuals from '../Visuals.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/navbar',
-      name: 'navbar',
-      component: Navbar
-    },
      {
-      path: '/app',
+      path: '/',
       name: 'app', 
       component: App
     },
     {
+      path: '/home',
+      name: "home",
+      component: Home
+    },
+    {
       path: '/transactions',
-      name: 'tpp', 
+      name: 'transactions', 
       component: Transactions
     },
     {
