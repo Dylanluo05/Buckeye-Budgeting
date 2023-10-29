@@ -1,11 +1,33 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-</script>
 
 <template>
-  
-
+  <div id="app">
+    <PieChart :pieData="pieData" />
+  </div>
 </template>
+
+<script lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import PieChart from "./components/PieChart.vue";
+
+  export default {
+    data: () => {
+      return {     
+        /*
+          Data for the pie chart, value is the percentage
+        */
+        pieData: [
+          { color: "#0B6487", value: 30 },
+          { color: "#9D1F37", value: 40 },
+          { color: "#F6931C", value: 30 }
+        ]
+      };
+    },
+    components: {
+      PieChart
+    }
+  };
+</script>
+
 
 <style scoped>
 #home-background-1 {
