@@ -1,5 +1,5 @@
 <template>
-    <div id="home-background-1">
+  <div id="home-background-1">
     <div class="home-background-1-image"></div>
     <div class="home-background-1-overlay"></div>
     <div class="home-background-1-content">
@@ -185,17 +185,17 @@
   margin-right: 50px;
 }
 
-  .section-title {
-    font-size: 35px;
-    color: #c10435;
-    margin-left: 35px;
-  }
+.section-title {
+  font-size: 35px;
+  color: #c10435;
+  margin-left: 35px;
+}
 
-  .section-value {
-    font-size: 25px;
-    color: black;
-    margin-left: 35px;
-  }
+.section-value {
+  font-size: 25px;
+  color: black;
+  margin-left: 35px;
+}
 
 #budget-envelopes-section {
   width: 90%;
@@ -237,7 +237,7 @@
 }
 
 #add-budget-envelope:hover {
-    background-color: #FA8072;
+  background-color: #fa8072;
 }
 
 .envelope-label {
