@@ -1,0 +1,6 @@
+ID,EnvelopeID,Datetime,Amount,Description,CardType,TransactionType,EnvelopeType
+1,1,9/28/2023 9:28,10.95,Walmart,Debit Card,Withdrawel,Shopping
+2,1,10/7/2023 10:55,69.69,IKEA,Buck ID,Withdrawel,Shopping
+3,1,10/28/2023 12:31,1.11,Target,Buck ID,Withdrawel,School
+4,2,8/21/2023 0:00,900,STL - Club Renney,Debit Card, Deposit,Beyonce
+5,3,10/28/2023 0:00,10,Laptop,Debit Card,Withdrawel,School

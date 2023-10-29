@@ -7,7 +7,27 @@ import Visuals from '../Visuals.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+     {
+      path: '/',
+      name: 'app', 
+      component: App
+    },
     {
+      path: '/home',
+      name: "home",
+      component: Home
+    },
+    {
+      path: '/transactions',
+      name: 'transactions', 
+      component: Transactions
+    },
+    {
+      path: '/visuals',
+      name: 'visuals', 
+      component: Visuals
+    }
+    /*{
       path: '/',
       name: 'app',
       component: App
