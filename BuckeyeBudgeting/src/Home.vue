@@ -7,6 +7,7 @@
     </div>
   </div>
   <div id="home-background-2">
+
     <div class="account-row" style = "margin-top: -75px;">
       <div id="account-balance-section">
         <h2 class="section-title">Total Account Balance</h2>
@@ -30,6 +31,7 @@
         <button id="add-budget-envelope">+</button>
       </div>
     </div>
+
 </template>
 
 <style scoped>

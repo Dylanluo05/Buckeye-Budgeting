@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+
 import Home from "./Home.vue"
 import Transactions from "./Transactions.vue"
 import Visuals from "./Visuals.vue"
@@ -42,6 +43,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   overflow: hidden;
 }
+
 #navbar-container {
   height: 80px;
   width: 100%;

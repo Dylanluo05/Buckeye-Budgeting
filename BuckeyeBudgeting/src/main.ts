@@ -10,7 +10,6 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 
-// Set Axios as a global property
 app.config.globalProperties.$http = axios;
 
 app.mount('#app');
