@@ -1,10 +1,11 @@
-<script setup lang="ts">
+<script lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import Home from "./Home.vue"
 import Transactions from "./Transactions.vue"
 import Visuals from "./Visuals.vue"
 
 import { ref } from "vue"
+
 var homeComponentEnabled = ref(true)
 var transactionsComponentEnabled = ref(false)
 var visualsComponentEnabled = ref(false)
@@ -24,6 +25,29 @@ function toggleComponent(id) {
     visualsComponentEnabled.value = true;
   }
 }
+
+/*export default {
+  data() {
+    return {
+      posts: [],
+    };
+  },
+
+  methods: {
+    async getData() {
+      try {
+        const response = await this.$http.get(
+          "http://jsonplaceholder.typicode.com/posts"
+        );
+        // JSON responses are automatically parsed.
+        this.posts = response.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+};*/
+
 </script>
 
 <template>
