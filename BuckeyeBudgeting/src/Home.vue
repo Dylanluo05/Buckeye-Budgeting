@@ -9,7 +9,7 @@
   <div id="home-background-2">
     <div class="account-row">
       <div id="account-balance-section">
-        <h2 class="section-title">Account Balance</h2>
+        <h2 class="section-title">Total Account Balance</h2>
         <p class="section-value">$100,000</p>
       </div>
       <div id="monthly-budget-section">
@@ -233,6 +233,11 @@
   cursor: pointer;
   font-size: 50px;
   color: white;
+  transition-duration: 0.5s;
+}
+
+#add-budget-envelope:hover {
+    background-color: #FA8072;
 }
 
 .envelope-label {
@@ -251,7 +256,7 @@
   height: 15%;
   width: 100%;
   background-color: whitesmoke;
-  font-size: 16px;
+  font-size: 14.5px;
   color: darkblue;
   display: flex;
   align-items: center;
