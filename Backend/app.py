@@ -86,7 +86,7 @@ def login():
 
 
 @app.route('/new', methods=['POST'])
-def new_user():
+def new_user(): 
     '''
     Expecting the following data structure:
     {
