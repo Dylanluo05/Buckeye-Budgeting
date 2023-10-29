@@ -1,0 +1,99 @@
+[
+    /* -- GET user login */
+    { // expected parameters
+        "username": "string",
+        "password": "string"
+    },
+    { // returning information if login fails (wrong password or no user found)
+        "success": "boolean" // boolean represents if login was successful
+    },
+
+
+
+    /* -- GET user all information for the current month */
+    { // expected parameters
+        "username": "string",
+        "year": "integer",
+        "month": "integer"
+    },
+    { // returning data
+        "user": "string",
+        "assets": "decimal",
+        "monthly_budget": "decimal",
+        "year": "integer",
+        "month": "month",
+        "envelopes": [ // an array of all the envelopes for that month
+            {
+                "name": "string",
+                "budget_amount": "decimal"
+            }
+        ],
+        "transactions": [ // array of all the transactions for that month
+            {
+                "name": "string",
+                "datetime": "string",
+                "amount": "decimal",
+                "envelope": "string" // what envelope the transaction belongs to
+            }
+        ],
+        "income": [ // array of all the income for that month
+            {
+                "name": "string",
+                "datetime": "string",
+                "amount": "decimal"
+            }
+        ]
+    },
+
+
+    /* -- POST/DELETE envelope (send the same parameters, just different types of request) */
+    { // expected data structure
+        "username": "string",
+        "year": "integer",
+        "month": "integer",
+        "name": "string",
+        "budget": "decimal"
+    },
+    { // returning data
+        "message": "string" // a message of how the call went, will reflect the status code returned
+    },
+
+
+
+    /* -- POST/DELETE transaction */
+    { // expected data structure
+        "username": "string",
+        "envelope": "string",
+        "datetime": "string (in UTC format)",
+        "name": "string",
+        "amount": "decimal"
+    },
+    { // returning data
+        "message": "string" // a message of how the call went, will reflect the status code returned
+    },
+
+
+    /* -- POST/DELETE income */
+    { // expected data structure
+        "username": "string",
+        "datetime": "string (in UTC format)",
+        "name": "string",
+        "amount": "decimal"
+    },
+    { // returning data
+        "message": "string" // a message of how the call went, will reflect the status code returned
+    },
+
+
+    /* -- POST monthly budget (updates or adds the monthly budget) */
+    { // expected data structure
+        "username": "string",
+        "year": "integer",
+        "month": "integer",
+        "amount": "decimal"
+    },
+    { // returning data
+    "message": "string" // a message of how the call went, will reflect the status code returned
+    }
+
+]
