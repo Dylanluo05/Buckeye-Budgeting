@@ -7,98 +7,31 @@
     </div>
   </div>
   <div id="home-background-2">
-    <div class="account-row">
+
+    <div class="account-row" style = "margin-top: -75px;">
       <div id="account-balance-section">
         <h2 class="section-title">Total Account Balance</h2>
-        <p class="section-value">$100,000</p>
+        <p class="section-value">$ {{ userData.assets }}</p>
       </div>
       <div id="monthly-budget-section">
         <h2 class="section-title">Monthly Allowance</h2>
-        <p class="section-value">$2,000</p>
+        <p class="section-value" id = "monthly-allowance-value">$ {{ userData.monthly_budget }}</p>
       </div>
     </div>
-    <div id="budget-envelopes-section">
-      <div class="budget-envelope">
-        <div class="envelope-label">Groceries</div>
-        <div class="envelope-amount-left">
-          Amount Left: <bold style="margin-left: 3px">$200</bold>
+      <div id="budget-envelopes-section">
+        <div v-for="envelope in userData.envelopes" :key="envelope.id" class="budget-envelope">
+          <div class="envelope-label">{{ envelope.name }}</div>
+          <div class="envelope-amount-left">Amount Left: $ {{ envelope.amountLeft }}</div>
+          <div class="envelope-monthly-allowance">Monthly Allowance: $ {{ envelope.amount }}</div>
+          <div class="envelope-edit-container">
+            <button class="edit-button">&#9998;</button>
+            <button class="delete-button">&#128465;</button>
+          </div>
         </div>
-        <div class="envelope-monthly-allowance">
-          Monthly Allowance: <bold style="margin-left: 3px">$300</bold>
-        </div>
-        <div class="envelope-edit-container">
-          <button class="edit-button">&#9998;</button>
-          <button class="delete-button">&#128465;</button>
-        </div>
+        <button id="add-budget-envelope">+</button>
       </div>
-      <div class="budget-envelope">
-        <div class="envelope-label">Groceries</div>
-        <div class="envelope-amount-left">
-          Amount Left: <bold style="margin-left: 3px">$200</bold>
-        </div>
-        <div class="envelope-monthly-allowance">
-          Monthly Allowance: <bold style="margin-left: 3px">$300</bold>
-        </div>
-        <div class="envelope-edit-container">
-          <button class="edit-button">&#9998;</button>
-          <button class="delete-button">&#128465;</button>
-        </div>
-      </div>
-      <div class="budget-envelope">
-        <div class="envelope-label">Groceries</div>
-        <div class="envelope-amount-left">
-          Amount Left: <bold style="margin-left: 3px">$200</bold>
-        </div>
-        <div class="envelope-monthly-allowance">
-          Monthly Allowance: <bold style="margin-left: 3px">$300</bold>
-        </div>
-        <div class="envelope-edit-container">
-          <button class="edit-button">&#9998;</button>
-          <button class="delete-button">&#128465;</button>
-        </div>
-      </div>
-      <div class="budget-envelope">
-        <div class="envelope-label">Groceries</div>
-        <div class="envelope-amount-left">
-          Amount Left: <bold style="margin-left: 3px">$200</bold>
-        </div>
-        <div class="envelope-monthly-allowance">
-          Monthly Allowance: <bold style="margin-left: 3px">$300</bold>
-        </div>
-        <div class="envelope-edit-container">
-          <button class="edit-button">&#9998;</button>
-          <button class="delete-button">&#128465;</button>
-        </div>
-      </div>
-      <div class="budget-envelope">
-        <div class="envelope-label">Groceries</div>
-        <div class="envelope-amount-left">
-          Amount Left: <bold style="margin-left: 3px">$200</bold>
-        </div>
-        <div class="envelope-monthly-allowance">
-          Monthly Allowance: <bold style="margin-left: 3px">$300</bold>
-        </div>
-        <div class="envelope-edit-container">
-          <button class="edit-button">&#9998;</button>
-          <button class="delete-button">&#128465;</button>
-        </div>
-      </div>
-      <div class="budget-envelope">
-        <div class="envelope-label">Groceries</div>
-        <div class="envelope-amount-left">
-          Amount Left: <bold style="margin-left: 3px">$200</bold>
-        </div>
-        <div class="envelope-monthly-allowance">
-          Monthly Allowance: <bold style="margin-left: 3px">$300</bold>
-        </div>
-        <div class="envelope-edit-container">
-          <button class="edit-button">&#9998;</button>
-          <button class="delete-button">&#128465;</button>
-        </div>
-      </div>
-      <button id="add-budget-envelope">+</button>
     </div>
-  </div>
+
 </template>
 
 <style scoped>
@@ -152,7 +85,7 @@
 }
 
 #home-background-2 {
-  height: 1200px;
+  height: 800px;
   width: 100%;
   background-color: whitesmoke;
   display: flex;
@@ -185,17 +118,17 @@
   margin-right: 50px;
 }
 
-.section-title {
-  font-size: 35px;
-  color: #c10435;
-  margin-left: 35px;
-}
+  .section-title {
+    font-size: 35px;
+    color: #c10435;
+    margin-left: 35px;
+  }
 
-.section-value {
-  font-size: 25px;
-  color: black;
-  margin-left: 35px;
-}
+  .section-value {
+    font-size: 25px;
+    color: black;
+    margin-left: 35px;
+  }
 
 #budget-envelopes-section {
   width: 90%;
@@ -237,7 +170,7 @@
 }
 
 #add-budget-envelope:hover {
-  background-color: #fa8072;
+    background-color: #FA8072;
 }
 
 .envelope-label {
@@ -306,7 +239,29 @@
 </style>
 
 <script>
+
 export default {
-  name: 'Navbar'
-}
+  data() {
+    return {
+      userData: [], 
+    };
+  },
+  methods: {
+    async getData() {
+      try {
+        const response = await this.$http.get(
+          "http://127.0.0.1:5000/user?username=cvo"
+        );
+        this.userData = response.data;
+        console.log(this.userData);
+
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+  mounted() {
+    this.getData();
+  },
+};
 </script>
