@@ -1,84 +1,67 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Home from "./Home.vue"
+import Transactions from "./Transactions.vue"
+import Visuals from "./Visuals.vue"
+import { ref } from "vue"
+var homeComponentEnabled = ref(true)
+var transactionsComponentEnabled = ref(false)
+var visualsComponentEnabled = ref(false)
+function toggleComponent(id) {
+  if (id == 1) {
+    homeComponentEnabled.value = true;
+    transactionsComponentEnabled.value = false;
+    visualsComponentEnabled.value = false;
+  } else if (id == 2) {
+    homeComponentEnabled.value = false;
+    transactionsComponentEnabled.value = true;
+    visualsComponentEnabled.value = false;
+  } else if (id == 3) {
+    homeComponentEnabled.value = false;
+    transactionsComponentEnabled.value = false;
+    visualsComponentEnabled.value = true;
+  }
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
+  <div id="navbar-container">
+    <img src="/src/assets/Buckeye-Budgeting-logos.png" id="buckeye-budgeting-logo" />
+    <a class="navbar-link" @click = "toggleComponent(1)">Budgeting Home</a>
+    <a class="navbar-link" @click = "toggleComponent(2)">Transactions</a>
+    <a class="navbar-link" @click = "toggleComponent(3)">Visuals</a>
+  </div>
+  <Home v-if="homeComponentEnabled" />
+  <Transactions v-if="transactionsComponentEnabled" />
+  <Visuals v-if="visualsComponentEnabled" />
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+html,
+body {
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
+#navbar-container {
+  height: 80px;
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  background-color: #c10435;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+#buckeye-budgeting-logo {
+  height: 100px;
+  width: 100px;
 }
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.navbar-link {
+  font-size: 20px;
+  color: white;
+  margin-left: 35px;
+  cursor: pointer;
+  text-decoration: none;
 }
 </style>

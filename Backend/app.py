@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 class DataFiles():
     ''' All the files that contains data. '''
-    DIRECTORY = r'./Backend/Data'
+    DIRECTORY = r'./Data'
     USERS = fr'{DIRECTORY}/Users.csv'
     TRANSACTIONS = fr'{DIRECTORY}/Transactions.csv'
     MONTHLY_BUDGET = fr'{DIRECTORY}/MonthlyBudget.csv'
@@ -181,7 +181,8 @@ def get_user():
         envelopes.append({
             'id': int(row['ID']),
             'name': row['Name'],
-            'amount': float(row['Budget'])
+            'amount': float(row['Budget']),
+            'amountLeft': float(row['AmountLeft'])
         })
     del allEnvelopes
 
@@ -200,8 +201,11 @@ def get_user():
             'id': int(row['ID']),
             'envelope_id': int(row['EnvelopeID']),
             'datetime': row['Datetime'],
-            'name': row['Name'],
-            'amount': float(row['Amount'])
+            'name': row['Description'],
+            'amount': float(row['Amount']),
+            'cardtype': row['CardType'],
+            'transactiontype': row['TransactionType'],
+            'envelopetype': row['EnvelopeType']
         })
     del allTransactions
 

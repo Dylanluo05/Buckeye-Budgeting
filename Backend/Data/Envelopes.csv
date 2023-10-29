@@ -1,4 +1,4 @@
-ID,UserID,Year,Month,Name,Budget
-1,1,2023,10,Shopping,50.00
-2,1,2023,10,Beyonce,1000.00
-3,1,2023,10,School,1.00
+ID,UserID,Year,Month,Name,Budget,AmountLeft
+1,1,2023,10,Shopping,50.00,40.00
+2,1,2023,10,Beyonce,1000.00,0.00
+3,1,2023,10,School,50.00,10.00
